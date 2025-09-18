@@ -1,4 +1,5 @@
-﻿namespace EF_AsyncCalculatr
+﻿using System.Threading.Tasks;
+namespace EF_AsyncCalculatr
 {
     delegate int Calculate(int x, int y);
     class Program
@@ -22,9 +23,9 @@
             return x / y;
         }
 
-        public static async System.Threading.Tasks.Task<int> CalculateAsync(Calculate calc, int x, int y)
+        public static async Task<int> CalculateAsync(Calculate calc, int x, int y)
         {
-            return await System.Threading.Tasks.Task.Run(() => calc(x, y));
+            return await Task.Run(() => calc(x, y));
         }
 
         public static void Main(string[] args)
